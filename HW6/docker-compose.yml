@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  server:
+    build: server/
+    command: python3 ./server.py
+    ports:
+      - "5001:5001"
+
+  client:
+    build: client/
+    command: python3 ./client.py
+    network_mode: host
+    depends_on:
+      - server
